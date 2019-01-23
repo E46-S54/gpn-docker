@@ -3,6 +3,7 @@ version: '3'
 services:
   grafana:
     image: grafana/grafana:latest
+    user: root
     depends_on:
     - prometheus
     healthcheck:
@@ -19,6 +20,7 @@ services:
 
   prometheus:
     image: prom/prometheus:latest
+    user: root
     depends_on:
     - netdata
     healthcheck:
