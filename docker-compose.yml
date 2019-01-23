@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    depends_on:
+    - prometheus
+    healthcheck:
+      test: ['CMD', 'curl', '-sfI', '127.0.0.1:3000/api/health']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    ports:
+    - 3000:3000
+    volumes:
+    - ./config/grafana:/etc/grafana:ro
+    - ./dashboards:/var/lib/dashboards:ro
+    - ./data/grafana:/var/lib/grafana:rw
+
+  prometheus:
+    image: prom/prometheus:latest
+    depends_on:
+    - netdata
+    healthcheck:
+      test: ['CMD', 'curl', '-sf', '127.0.0.1:9090/-/healthy']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    command:
+    - --storage.tsdb.path=/prometheus
+    - --storage.tsdb.retention=7d
+    volumes:
+    - ./config/prometheus:/etc/prometheus:ro
+    - ./data/prometheus:/prometheus:rw
+
+  netdata:
+    image: netdata/netdata:latest
+    healthcheck:
+      test: ['CMD', 'curl', '-sf', '127.0.0.1:19999/api/v1/registry?action=hello']
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    volumes:
+    - /proc:/host/proc:ro
+    - /sys:/host/sys:ro
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - ./config/netdata:/etc/netdata:ro
+    cap_add:
+    - SYS_PTRACE
+    security_opt:
+    - apparmor:unconfined

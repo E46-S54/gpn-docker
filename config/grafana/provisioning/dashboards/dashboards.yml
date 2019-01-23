@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+- name: 'netdata'
+  orgId: 1
+  folder: 'Netdata'
+  type: file
+  disableDeletion: true
+  updateIntervalSeconds: 30
+  options:
+    path: /var/lib/dashboards
