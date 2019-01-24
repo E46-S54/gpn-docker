@@ -51,6 +51,7 @@ to archive.
   * A few beautiful dashboards are provided for your convenience:
     * Netdata Machine Overview
     * Netdata CPU Drilldown
+    * Netdata Memory Drilldown
 * Analytics
   * Grafana analytics / telemetry is disabled for better privacy.
 

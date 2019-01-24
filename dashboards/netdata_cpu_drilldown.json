@@ -37,7 +37,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1548275441411,
+  "iteration": 1548320632994,
   "links": [],
   "panels": [
     {
@@ -848,6 +848,201 @@
         "x": 0,
         "y": 30
       },
+      "id": 54,
+      "panels": [],
+      "title": "user and group load",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 7,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 31
+      },
+      "id": 56,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "minSpan": 5,
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (\n  netdata_users_cpu_percentage_average{job=\"$job\",instance=\"$instance\",dimension!=\"idle\"}\n) by (dimension)\n/\nignoring (dimension) group_left\ncount(\n  count(\n    netdata_cpu_cpu_percentage_average{job=\"$job\",instance=\"$instance\"}\n  ) by (chart)\n)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{ dimension }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "usage by user",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 7,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 31
+      },
+      "id": 57,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "minSpan": 5,
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (\n  netdata_groups_cpu_percentage_average{job=\"$job\",instance=\"$instance\",dimension!=\"idle\"}\n) by (dimension)\n/\nignoring (dimension) group_left\ncount(\n  count(\n    netdata_cpu_cpu_percentage_average{job=\"$job\",instance=\"$instance\"}\n  ) by (chart)\n)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{ dimension }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "usage by group",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
       "id": 21,
       "panels": [],
       "title": "interrupts, softirqs, softnets",
@@ -866,7 +1061,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 31
+        "y": 42
       },
       "id": 45,
       "legend": {
@@ -959,7 +1154,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 31
+        "y": 42
       },
       "id": 25,
       "legend": {
@@ -1053,7 +1248,7 @@
         "h": 10,
         "w": 8,
         "x": 16,
-        "y": 31
+        "y": 42
       },
       "id": 44,
       "legend": {
@@ -1134,7 +1329,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
@@ -1168,7 +1363,7 @@
         "multi": false,
         "name": "job",
         "options": [],
-        "query": "label_values(job)",
+        "query": "label_values(netdata_info, job)",
         "refresh": 1,
         "regex": "",
         "sort": 5,
@@ -1191,7 +1386,7 @@
         "query": "label_values(netdata_info{job=\"$job\"}, instance)",
         "refresh": 1,
         "regex": "",
-        "sort": 0,
+        "sort": 5,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
@@ -1247,5 +1442,5 @@
   "timezone": "",
   "title": "Netdata CPU Drilldown",
   "uid": "6569feQik",
-  "version": 41
+  "version": 1
 }
