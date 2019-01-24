@@ -4,6 +4,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     user: root
+    restart: always
     depends_on:
     - prometheus
     healthcheck:
@@ -21,6 +22,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     user: root
+    restart: always
     depends_on:
     - netdata
     healthcheck:
@@ -37,6 +39,8 @@ services:
 
   netdata:
     image: netdata/netdata:latest
+    user: root
+    restart: always
     healthcheck:
       test: ['CMD', 'curl', '-sf', '127.0.0.1:19999/api/v1/registry?action=hello']
       interval: 10s
