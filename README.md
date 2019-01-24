@@ -25,6 +25,12 @@ to add your own user to the docker group and log in to the group
 afterwards. If you don't want to add your user to the docker group,
 you will have to execute every command as root via `sudo`.
 
+## Volumes / Storage
+All data is kept in subdirectories of `./data/` via docker
+bind-volumes. This makes the entire stack, including it's data,
+not only easy to reset to it's initial state, but also easy
+to archive.
+
 ## Components and their sane defaults
 ### Grafana
 * Administrator login
@@ -32,7 +38,8 @@ you will have to execute every command as root via `sudo`.
   * Default password: `gpn`
 * Anonymous login
   * Anonymous access is enabled.
-  * Without authentication, you are granted Editor permissions so      you can create dashboards and play around in the "Explore" tab.
+  * Without authentication, you are granted Editor permissions so 
+    you can create dashboards and play around in the "Explore" tab.
 * Explore tab
   * Explore tab is enabled.
   * This enables you to play around with prometheus metrics, without
@@ -53,5 +60,6 @@ via relabeling for cosmetic reasons.
 
 ### Netdata
 Netdata configuration is minimal. Metrics are only kept in memory,
-and are not cached on disk. Retention is set to __600 samples__, and samples are collected __every second__.
+and are not cached on disk. Retention is set to __600 samples__,
+and samples are collected __every second__.
 Most plugins, and also Netdata registry are disabled.
