@@ -15,6 +15,17 @@ $ docker-compose up -d
 The Grafana instance is now available at [http://localhost:3000]().
 Metrics are automatically collected from this point of time.
 
+Alternatively, use the included `Makefile`, which has the following
+targets:
+* __run-daemon__: run `docker-compose up -d` (as daemon) - 
+  _this is the default target_.
+* __run-foreground__: run `docker-compose up` (in the foreground)
+* __stop__: run `docker-compose down`
+* __archive__: create an archive of this instance, including all
+  collected data.
+* __clean__: run `docker-compose down` + delete the archive and
+  everything in `./data/`
+
 Please make sure that `docker` and `docker-compose` are installed,
 and that you have access to the docker daemon.
 If you are member of the docker group, you are fine.
