@@ -12,7 +12,8 @@ $ git clone https://github.com/PhilsLab/gpn-docker
 $ cd gpn-docker
 $ docker-compose up -d
 ```
-The Grafana instance is now available at [http://localhost:3000]().
+The Grafana instance is now available at 
+[http://localhost:3000](http://localhost:3000).
 Metrics are automatically collected from this point of time.
 
 Alternatively, use the included `Makefile`, which has the following
