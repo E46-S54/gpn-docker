@@ -8,4 +8,4 @@ providers:
   disableDeletion: true
   updateIntervalSeconds: 30
   options:
-    path: /var/lib/dashboards
+    path: /var/lib/dashboards/netdata
