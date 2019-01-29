@@ -21,6 +21,8 @@ targets:
 * __run-daemon__: run `docker-compose up -d` (as daemon) - 
   _this is the default target_.
 * __run-foreground__: run `docker-compose up` (in the foreground)
+* __update__: pull latest docker images and the re-create affected
+  containers
 * __stop__: run `docker-compose down`
 * __archive__: create an archive of this instance, including all
   collected data.

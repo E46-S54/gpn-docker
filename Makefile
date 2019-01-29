@@ -13,6 +13,11 @@ run-foreground:
 	@echo "> running in foreground..."
 	-docker-compose up
 
+.PHONY: update
+update:
+	docker-compose pull
+	docker-compose up -d
+
 .PHONY: stop
 stop:
 	@echo "> stopping containers..."
